@@ -18,14 +18,9 @@ jobs:
           python-version: "3.9"
 
       - name: Build package
-        run: uv build
+        run: uv build --wheel
 
       - name: Release to Github
         uses: softprops/action-gh-release@v2
         with:
           files: dist/*.whl
-
-      - name: Publish package to PyPi
-        run: uv publish
-        env:
-          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
