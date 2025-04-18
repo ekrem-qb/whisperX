@@ -216,10 +216,11 @@ class WriteTXT(ResultWriter):
         for segment in result["segments"]:
             speaker = segment.get("speaker")
             text = segment["text"].strip()
+            time = segment["start"]
             if speaker is not None:
-                print(f"[{speaker}]: {text}", file=file, flush=True)
+                print(f"{time}\n{speaker}\n{text}", file=file, flush=True)
             else:
-                print(text, file=file, flush=True)
+                print(f"{time}\n{text}", file=file, flush=True)
 
 
 class SubtitlesWriter(ResultWriter):
